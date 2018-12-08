@@ -6,7 +6,7 @@ const htmlPlugin = new HtmlWebpackPlugin({
   template: './src/index.html',
   filename: './index.html',
 });
-const cssPlugin = new ExtractTextPlugin('css/[name].[hash].css');
+const cssPlugin = new ExtractTextPlugin('[name].[hash].css');
 
 module.exports = {
   module: {
@@ -45,6 +45,25 @@ module.exports = {
             },
           ],
         }),
+      },
+      {
+        test: /.*\.(gif|png|jpe?g)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[path][name].[ext]',
+            },
+          },
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              mozjpeg: {
+                quality: 85,
+              },
+            },
+          },
+        ],
       },
     ],
   },
