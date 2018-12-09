@@ -6,10 +6,13 @@ $c-void: #000000;
   box-sizing: border-box;
 }
 
-#canvas {
+canvas {
   display: block;
 }
 
 body {
-  background-color: #000000;
+  background-color: $c-void;
 }
+
+
+
